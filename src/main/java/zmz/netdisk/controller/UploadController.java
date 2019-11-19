@@ -20,6 +20,7 @@ public class UploadController
     private String filePath;
 
     @RequestMapping("/upload")
+
     public String upload(@RequestParam("files[]") MultipartFile[] files, HttpServletRequest request)
     {
 
@@ -30,6 +31,7 @@ public class UploadController
             if (fileName.equals(""))
                 continue;
             System.out.println(fileName);
+
             File dest = new File(filePath + fileName);
             try {
                 file.transferTo(dest);
