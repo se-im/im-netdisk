@@ -8,7 +8,7 @@ import java.util.List;
 @Data
 public class DirectoryListResult {
     private List<FileObject> files;
-    private List<FloderObject> floders;
+    private List<FolderObject> floders;
 
     public DirectoryListResult() {
         files = new ArrayList<>();
@@ -20,8 +20,8 @@ public class DirectoryListResult {
         this.files.add(fileObject);
     }
 
-    public void addFloder(FloderObject floderObject)
+    public void addFloder(FolderObject folderObject)
     {
-        this.floders.add(floderObject);
+        this.floders.add(folderObject);
     }
 }

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import zmz.netdisk.domain.DirectoryListResult;
 import zmz.netdisk.domain.FileObject;
-import zmz.netdisk.domain.FloderObject;
+import zmz.netdisk.domain.FolderObject;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
@@ -97,10 +97,10 @@ public class UploadController
                 result.addFile(fileObject);
             }else if(f.isDirectory())
             {
-                FloderObject floderObject = new FloderObject();
-                floderObject.setName(f.getName());
-                floderObject.setTime(f.lastModified());
-                result.addFloder(floderObject);
+                FolderObject folderObject = new FolderObject();
+                folderObject.setName(f.getName());
+                folderObject.setTime(f.lastModified());
+                result.addFloder(folderObject);
             }
         }
 
