@@ -6,6 +6,9 @@ import lombok.Data;
 public class FileObject {
     //文件名
     private String name;
+
+    //文件全路径名
+    private String nameOfFullPath;
     //文件最后修改时间
     private Long time;
     //文件大小，单位b

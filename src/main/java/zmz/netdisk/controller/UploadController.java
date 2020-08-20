@@ -22,6 +22,7 @@ import java.io.IOException;
 @RestController
 @Slf4j
 @CrossOrigin
+@RequestMapping("/file")
 public class UploadController
 {
 
@@ -94,12 +95,22 @@ public class UploadController
                 fileObject.setName(f.getName());
                 fileObject.setTime(f.lastModified());
                 fileObject.setSize(f.length());
+                fileObject.setNameOfFullPath(f.getAbsolutePath().substring(rootPath.length()));
                 result.addFile(fileObject);
             }else if(f.isDirectory())
             {
                 FolderObject folderObject = new FolderObject();
                 folderObject.setName(f.getName());
+                folderObject.setNameOfFullPath(f.getAbsolutePath().substring(rootPath.length()));
                 folderObject.setTime(f.lastModified());
+                String[] list = f.list();
+                if(list == null || list.length == 0)
+                {
+                    folderObject.setEmptyFolder(true);
+                }else
+                {
+                    folderObject.setEmptyFolder(false);
+                }
                 result.addFloder(folderObject);
             }
         }
