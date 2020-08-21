@@ -2,6 +2,10 @@ package zmz.netdisk.controller;
 
 
 import com.mr.response.error.BusinessException;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringUtils;
@@ -11,6 +15,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,13 +25,19 @@ import java.io.IOException;
 @RestController
 @Slf4j
 @CrossOrigin
+@Api(tags = "文件下载相关api")
 public class DownloadController {
 
 
     @Value("${file.upload.place}")
     private String rootPath;
 
-    @RequestMapping(value = "/download")
+
+    @ApiOperation(value = "下载文件" )
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "fileName", value = "文件全路径名",required = true,dataType = "string", example = "/SecondMarket/pom.xml"),
+    })
+    @GetMapping(value = "/download")
     public ResponseEntity<byte[]> downloadFile(String fileName) throws IOException, BusinessException {
 
         if(StringUtils.isEmpty(fileName))

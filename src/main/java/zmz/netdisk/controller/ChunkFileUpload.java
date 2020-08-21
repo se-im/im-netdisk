@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ChunkFileUpload {
 
 
-    @RequestMapping("/")
+    @RequestMapping("/chuck")
     public void upload()
     {
 

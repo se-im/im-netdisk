@@ -6,7 +6,7 @@ container_name="im-netdisk-c"
 
 port=8010
 
-
+file_Location=/home/zmz/netdisk/
 
 old_container=$(sudo docker ps -a | grep $container_name | awk '{print $1}')
 
@@ -51,7 +51,7 @@ else
 fi
 
 
-sudo docker run --name $container_name -p $port:$port -d $image_name
+sudo docker run --name $container_name -p $port:$port -v $file_Location:$file_Location -d $image_name
 
 if [ $? -ne 0 ]; then
   echo "容器启动失败"

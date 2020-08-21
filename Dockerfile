@@ -1,6 +1,6 @@
 FROM openjdk:8-jdk-alpine
 
-VOLUME /tmp
+VOLUME /home/zmz/netdisk/
 
 COPY  target/*.jar app.jar
 

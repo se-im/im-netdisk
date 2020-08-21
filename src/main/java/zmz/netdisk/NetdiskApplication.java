@@ -14,6 +14,9 @@ public class NetdiskApplication implements CommandLineRunner
     @Value("${file.upload.place}")
     private String rootPath;
 
+    @Value("${im.headPic.location}")
+    private String imPicLocation;
+
     public static void main(String[] args)
     {
         SpringApplication.run(NetdiskApplication.class, args);
@@ -22,6 +25,12 @@ public class NetdiskApplication implements CommandLineRunner
     @Override
     public void run(String... args) throws Exception {
         File f = new File(rootPath);
+        if(!f.exists())
+        {
+            f.mkdirs();
+        }
+
+        f = new File(rootPath + imPicLocation);
         if(!f.exists())
         {
             f.mkdirs();
