@@ -38,6 +38,10 @@ public class UploadController
     private String imPicLocation;
 
 
+    @Value("${file.server.name}")
+    private String domain;
+
+
 
     @ApiOperation(value = "上传文件头像文件" )
     @PostMapping("/upload/headpic")
@@ -67,7 +71,7 @@ public class UploadController
             e.printStackTrace();
         }
 
-        String fileNetLocation = "http://1.zmz121.cn:8010/res/file/pic/" + dest.getName();
+        String fileNetLocation = "http://" + domain +":8010/res/file/pic/" + dest.getName();
 
         return ServerResponse.success(fileNetLocation);
 
