@@ -41,6 +41,9 @@ public class UploadController
     @Value("${file.server.name}")
     private String domain;
 
+    @Value("${file.url.prefix}")
+    private String urlPrefix;
+
 
 
     @ApiOperation(value = "上传文件头像文件" )
@@ -71,7 +74,7 @@ public class UploadController
             e.printStackTrace();
         }
 
-        String fileNetLocation = "http://" + domain +":8010/res/file/pic/" + dest.getName();
+        String fileNetLocation = urlPrefix + "/res/file/pic/" + dest.getName();
 
         return ServerResponse.success(fileNetLocation);
 
